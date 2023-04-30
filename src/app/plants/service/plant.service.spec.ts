@@ -1,11 +1,16 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { faker } from '@faker-js/faker';
+import { environment } from 'src/environments/environment';
 import { Plant } from '../model/plant';
 import { PlantService } from './plant.service';
 
 describe('PlantService', () => {
   let plantService: PlantService;
+  let httpController: HttpTestingController;
   function createRandomPlants(): Plant {
     return {
       id: faker.datatype.number(100),
@@ -29,16 +34,23 @@ describe('PlantService', () => {
       providers: [PlantService],
     });
     plantService = TestBed.inject(PlantService);
+    httpController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
     expect(plantService).toBeTruthy();
   });
 
-  it('should return a list of Plats', () => {
+  it('should return a plants list', (doneFn) => {
     plantService.getAll().subscribe((data) => {
       expect(data.length).toEqual(plantsMock.length);
       expect(data).toEqual(plantsMock);
+      doneFn();
     });
+
+    const url = `${environment.plantsUrl}`;
+    const req = httpController.expectOne(url);
+    req.flush(plantsMock);
+    httpController.verify();
   });
 });

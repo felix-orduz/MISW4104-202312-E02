@@ -1,1 +1,20 @@
-<p>list-plants works!</p>
+<div style="width:80%">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Común</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Clima</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plant of plantList">
+        <th scope="row">{{plant.id}}</th>
+        <td>{{plant.nombre_comun}}</td>
+        <td>{{plant.tipo}}</td>
+        <td>@{{plant.clima}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
