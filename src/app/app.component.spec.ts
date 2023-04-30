@@ -23,29 +23,26 @@ describe('AppComponent', () => {
 
   it(`should have a header component`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    const personDebug: DebugElement = fixture.debugElement;
-    const h3Debug: DebugElement = personDebug.query(
+    const debug: DebugElement = fixture.debugElement;
+    const element: DebugElement = debug.query(
       By.directive(HeaderComponent)
     );
-    expect(h3Debug).toBeTruthy();
+    expect(element).toBeTruthy();
   });
 
   it(`should have a footer component`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    const personDebug: DebugElement = fixture.debugElement;
-    const h3Debug: DebugElement = personDebug.query(
+    const debug: DebugElement = fixture.debugElement;
+    const element: DebugElement = debug.query(
       By.directive(FooterComponent)
     );
-    expect(h3Debug).toBeTruthy();
+    expect(element).toBeTruthy();
   });
 
   it(`should have a router outlet component`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    const personDebug: DebugElement = fixture.debugElement;
-    const h3Debug: DebugElement = personDebug.query(By.directive(RouterOutlet));
-    expect(h3Debug).toBeTruthy();
+    const debug: DebugElement = fixture.debugElement;
+    const element: DebugElement = debug.query(By.directive(RouterOutlet));
+    expect(element).toBeTruthy();
   });
 });
