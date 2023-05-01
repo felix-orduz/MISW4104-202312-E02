@@ -13,8 +13,14 @@
         <th scope="row">{{plant.id}}</th>
         <td>{{plant.nombre_comun}}</td>
         <td>{{plant.tipo}}</td>
-        <td>@{{plant.clima}}</td>
+        <td>{{plant.clima}}</td>
       </tr>
     </tbody>
   </table>
+  <p class="font-weight-bold">
+    Total de plantas de interior: {{this.totalInterior}}
+    <br />
+    Total de plantas de exterior: {{this.totalExterior}}
+  </p>
+
 </div>
